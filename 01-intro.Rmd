@@ -39,9 +39,9 @@ library(lubridate)
 
 Neste seção, aprenderemos:
 
-- Transformar e extrair datas
-- Funções úteis
-- Trabalhar com fusos horários
-- Operações aritméticas com datas
-- Gerar datas
+- Transformar e extrair datas.
+- Algumas funções úteis para trabalhar com datas.
+- Trabalhar com fusos horários.
+- Operações aritméticas com datas.
+- Gerar datas.
 

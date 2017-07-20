@@ -1,0 +1,56 @@
+---
+title: "A classe date"
+author: "Athos Damiani, William Amorim"
+---
+
+```{r, message=FALSE, warning=FALSE, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE, 
+  out.width = "60%", out.height = "60%",
+  fig.retina = 2
+)
+```
+
+## A classe "date"
+
+Datas no R são tratadas como um tipo especial de objeto, com classe `date`. Há várias formas de criar objetos dessa classe:
+
+```{r}
+data_string <- "21-10-2015"
+class(data_string)
+
+data_date <- date(data_string)
+class(data_date)
+
+data_as_date <- as_date(data_string)
+class(data_as_date)
+
+data_mdy <- dmy(data_string)
+class(data_mdy)
+```
+
+Veja que as funções `date()` e `as_date()` converteram a *string* para data, mas não devolveram o valor esperado. A função `dmy()` resolve esse problema estabelecendo explicitamente a ordem dia-mês-ano. Existem funções para todas as ordens possíveis: `dmy()`, `mdy()`, `myd()`, `ymd()`, `ydm()` etc.
+
+As funções `date()` e `as_date()` assumem que a ordem é ano-mês-dia (ymd).
+
+```{r}
+date("2015-10-21")
+as_date("2015-10-21")
+```
+
+Uma grande facilidade que essas funções trazem é poder criar objetos com classe `date` a partir de números e *strings* em diversos formatos.
+
+```{r}
+dmy(21102015)
+dmy("21102015")
+dmy("21/10/2015")
+dmy("21.10.2015")
+```
+
+Se além da data você precisar especificar o horário, basta usar as funções do tipo `ymd_h()`, `ymd_hm()`, `ymd_hms()`, sendo que também há uma função para cada formato de dia-mês-ano.
+
+
+```{r}
+ymd_hms(20151021165411)
+```
+

@@ -1,6 +1,6 @@
 ---
 title: "Funções úteis"
-author: "Athos Damiani, William Amorim"
+author: "William Amorim"
 ---
 
 ```{r, message=FALSE, warning=FALSE, include=FALSE}
@@ -13,4 +13,50 @@ knitr::opts_chunk$set(
 
 ## Funções úteis
 
- (`today()`, `now()`, etc)
+O `lubridate` traz diversas funções para extrair os componentes de um objeto da classe `date`. 
+
+- `second()` - extrai os segundos.
+- `minute()` - extrai os minutos.
+- `hour()` - extrai a hora.
+- `wday()` - extrai o dia da semana.
+- `mday()` - extrai o dia do mês.
+- `month()` - extrai o mês.
+- `year()` - extrai o ano.
+
+Os nomes são tão óbvios que a explicação do que cada função faz é praticamente desnecessária.
+
+```{r}
+bday <- ymd_hms(19890729030142)
+bday
+
+second(bday)
+day(bday)
+month(bday)
+year(bday)
+
+wday(bday)
+wday(bday, label = TRUE)
+```
+
+Você também pode usar essas funções para atribuir esses componentes a uma data:
+
+```{r}
+data <- dmy(01041991)
+data
+
+hour(data) <- 20
+data
+```
+
+Também existem funções para extrair a data no instante da execução.
+
+```{r}
+today() 
+now()
+
+# Data e horário do dia em que essa página foi editada pela última vez.
+
+```
+
+
+
