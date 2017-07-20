@@ -1,0 +1,44 @@
+---
+title: "Transformar `character` em `date`"
+author: "Curso-R"
+---
+
+Exemplos com datas
+
+```{r}
+lakers %>% 
+  select(date) %>% 
+  mutate(`date %>% ymd` = date %>% ymd,
+         `date %>% ymd_hm` = date %>% ymd_hm) %>% 
+  head %>%
+  knitr::kable()
+```
+
+Exemplos com datas e horas
+
+```{r}
+lakers %>% 
+  select(date, time) %>% 
+  mutate(`paste(date, time) %>% ymd` = paste(date, time) %>% ymd,
+         `paste(date, time) %>% ymd_hm` = paste(date, time) %>% ymd_hm,
+         `time %>% hm` = time %>% hm,
+         `time %>% hms` = time %>% hms
+         ) %>% 
+  head %>%
+  knitr::kable()
+```
+
+
+## Transformar `date` em `character`
+
+
+## Extrair informações de datas
+
+
+## Funções úteis
+
+
+## Operações aritméticas entre datas
+
+
+## Gerar datas

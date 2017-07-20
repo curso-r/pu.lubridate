@@ -1,15 +1,26 @@
 ---
 title: "Lubridate"
-author: "Athos Damiani"
+author: "Curso-R"
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Lubridate
 
 O pacote lubridate faz o trabalho com datas ser muito mais fácil. Ela foi criada por Garrett Grolemund e Hadley Wickham.
+
+Resumo:
+
+- transformar character (de diversos formatos) em data.
+- transformar data em character.
+- extrair informações das datas `y-m-d H:M:S`
+- funções úteis (`today()`, `now()`, etc)
+- timezones
+- operações aritméticas com datas
+- gerar datas
+
+**Pacotes**
 
 ```{r}
 library(lubridate)
@@ -17,64 +28,11 @@ library(magrittr)
 library(dplyr)
 ```
 
-Resumo do que aprenderemos:
-
-- transformar character de diversos formatos em data.
-- transformar data em character de diversos formatos.
-- extrair informações das datas `y m d h m s`
-- funções úteis (`today()`, `now()`, etc)
-- timezones
-- operações aritméticas com datas
-- gerar datas
+**Dados**
 
 Vamos usar o banco de dados `lakers` para os exemplos.
 
-## Transformar `character` em `date`
-
 ```{r}
-df <- data_frame(`entrada` = c("")
-                 , `função` = c("")
-                 , `saída` = c(""))
+head(lakers)
 ```
-
-
-Exemplos com datas
-
-```{r}
-lakers %>% 
-  select(date) %>% 
-  mutate(`date %>% ymd` = date %>% ymd,
-         `date %>% ymd_hm` = date %>% ymd_hm) %>% 
-  head %>%
-  knitr::kable()
-```
-
-Exemplos com datas e horas
-
-```{r}
-lakers %>% 
-  select(date, time) %>% 
-  mutate(`paste(date, time) %>% ymd` = paste(date, time) %>% ymd,
-         `paste(date, time) %>% ymd_hm` = paste(date, time) %>% ymd_hm,
-         `time %>% hm` = time %>% hm,
-         `time %>% hms` = time %>% hms
-         ) %>% 
-  head %>%
-  knitr::kable()
-```
-
-
-## Transformar `date` em `character`
-
-
-## Extrair informações de datas
-
-
-## Funções úteis
-
-
-## Operações aritméticas entre datas
-
-
-## Gerar datas
 
