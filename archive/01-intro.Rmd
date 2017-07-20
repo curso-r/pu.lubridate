@@ -1,0 +1,38 @@
+---
+title: "Lubridate"
+author: "Curso-R"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+O pacote lubridate faz o trabalho com datas ser muito mais fácil. Ela foi criada por Garrett Grolemund e Hadley Wickham.
+
+### Resumo
+
+- transformar character (de diversos formatos) em data.
+- transformar data em character.
+- extrair informações das datas `y-m-d H:M:S`
+- funções úteis (`today()`, `now()`, etc)
+- timezones
+- operações aritméticas com datas
+- gerar datas
+
+### Pacotes
+
+```{r, echo=TRUE, eval=FALSE}
+library(lubridate)
+library(magrittr)
+library(dplyr)
+```
+
+### Dados
+
+Vamos usar o banco de dados `lakers` para os exemplos.
+
+```{r}
+head(lakers)
+```
+
