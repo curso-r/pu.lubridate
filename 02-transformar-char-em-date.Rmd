@@ -3,7 +3,13 @@ title: "Transformar `character` em `date`"
 author: "Curso-R"
 ---
 
-Exemplos com datas
+## Transformar `character` em `date`
+
+Suponha que `x` seja um vetor de strings que representam datas.
+
+As funções `ymd()`, `ymd_h()`,`ymd_hm()`,`ymd_hms()`, devem ser escolhidas conforme o formato de `x`. Se só tivermos ano, mês e dia, precisaremos da função `ymd()`. Se tivermos hora e minuto juntos, aí a função `ymd_hm()` e assim por diante.
+
+### Exemplos com datas
 
 ```{r}
 lakers %>% 
@@ -14,7 +20,9 @@ lakers %>%
   knitr::kable()
 ```
 
-Exemplos com datas e horas
+- Repare que a função `ymd_hm()` retorna `NA` porque não há informação de hora e nem de minuto na string. 
+
+### Exemplos com datas e horas
 
 ```{r}
 lakers %>% 
@@ -29,16 +37,7 @@ lakers %>%
 ```
 
 
-## Transformar `date` em `character`
 
 
-## Extrair informações de datas
 
 
-## Funções úteis
-
-
-## Operações aritméticas entre datas
-
-
-## Gerar datas

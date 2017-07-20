@@ -2,3 +2,5 @@
 title: "Transformar `date` em `character`"
 author: "Curso-R"
 ---
+
+## Transformar `date` em `character`

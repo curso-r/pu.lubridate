@@ -3,3 +3,4 @@ title: "Funções úteis"
 author: "Curso-R"
 ---
 
+## Funções úteis

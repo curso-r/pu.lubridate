@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 O pacote lubridate faz o trabalho com datas ser muito mais fácil. Ela foi criada por Garrett Grolemund e Hadley Wickham.
 
-Resumo:
+### Resumo
 
 - transformar character (de diversos formatos) em data.
 - transformar data em character.
@@ -20,15 +20,15 @@ Resumo:
 - operações aritméticas com datas
 - gerar datas
 
-**Pacotes**
+### Pacotes
 
-```{r}
+```{r, echo=TRUE, eval=FALSE}
 library(lubridate)
 library(magrittr)
 library(dplyr)
 ```
 
-**Dados**
+### Dados
 
 Vamos usar o banco de dados `lakers` para os exemplos.
 
