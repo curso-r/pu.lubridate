@@ -12,3 +12,17 @@ knitr::opts_chunk$set(
 ```
 
 ## Fusos horários
+
+Uma característica inerente das datas é o fuso horário. Se você tiver trabalhando com datas de eventos no Brasil e na Escócia, por exemplo, é preciso verificar se os valores seguem o mesmo fuso horário. Além disso, quando a data exata de um evento for relevante, você pode precisar converter horários para outros fusos para comunicar seus resultados em outros países.
+
+Para fazer essas coisas, o `lubridate` fornece as funções `with_tz()` e `force_tz()`.
+
+```{r}
+estreia_GoT <- ymd_hms("2017-07-16 22:00:00", tz = "America/Sao_Paulo")
+estreia_GoT
+
+with_tz(estreia_GoT, tzone = "GMT")
+with_tz(estreia_GoT, tzone = "US/Alaska")
+
+```
+
