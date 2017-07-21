@@ -26,3 +26,4 @@ with_tz(estreia_GoT, tzone = "US/Alaska")
 
 ```
 
+Você também pode...
