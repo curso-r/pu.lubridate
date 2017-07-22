@@ -14,11 +14,11 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Remotes:
-    curso-r/puBuild
+  curso-r/puBuild
 Imports:
   puBuild,
   tutorial,
-    dplyr,
-    lubridate,
-    tidyr,
-    stringr
+  dplyr,
+  lubridate,
+  tidyr,
+  stringr
