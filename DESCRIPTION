@@ -13,8 +13,6 @@ Depends:
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-Remotes:
-  curso-r/puBuild
 Imports:
   puBuild,
   tutorial,
@@ -22,3 +20,4 @@ Imports:
   lubridate,
   tidyr,
   stringr
+Remotes: curso-r/puBuild
