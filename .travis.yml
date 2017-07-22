@@ -5,10 +5,6 @@ branches:
   only:
   - master
 
-env:
-  global:
-    - secure: "vHNu0SKU+6O063h2KvlQNRvrTmdMKfPLVd41oRYHurg9iO3HRB53AHPN4w1iLVmg1sImeg249b6n/GoXP1DlF1J8g1RoluIlk/7Yylkh52xwPoaCuCtuYxQB2C75eO/a+M8lUSbQ2uz9S92/7IHI2j5jxnOYE91yv/BGxak6e8uKmLHHDdZdvc9z5vE8eTTKTGQBnVra7WrJJerW6P6yl3gblRAGH+H9h2Cd1OWZD7+V2oQUN5TzcFrai3QkLyEoxOahPsYML/nHHXetlMW7pBpxFyHo6At42XrvsXCOKPn3JjzsBVLsD7qL+gLXHh9UTpkJYp4sMxdSiaFb3ReY/QhkvgWDfVoTpE/nhCauCzfB8t+CyrQndxaDoJgUulcs3JQMhktX2eWx/Zo9h1AxOA9a1+cI+XqkxYz3kx/zZc9DKWBQ9AYZ82XKCCBZYwl0eZe2G4SghwKk3aGQiJse6uRtxMhb3/AqM1O/2E7c1GxGT49IvVRb6DNaYZ7pqwpdLDVTsh7rrQ1arra/p9jdxW/romRajnngPTqmmgN55M8beLV0uaJpE4WeYbAhDPwowdqzcWPe8F1ej10jKNETLVfRNW56zoTtp4RsGyx0IwZArsr2O10zSiBV0tsiUDDEVGvsyFgTEQRQUGt7+0CxR+G3np9yMI7BOOyJoNn0NKw="
-
 before_script:
   - chmod +x ./_build.sh
   - chmod +x ./_deploy.sh
