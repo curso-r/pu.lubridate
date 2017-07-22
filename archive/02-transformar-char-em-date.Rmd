@@ -1,0 +1,43 @@
+---
+title: "Transformar `character` em `date`"
+author: "Curso-R"
+---
+
+## Transformar `character` em `date`
+
+Suponha que `x` seja um vetor de strings que representam datas.
+
+As funções `ymd()`, `ymd_h()`,`ymd_hm()`,`ymd_hms()`, devem ser escolhidas conforme o formato de `x`. Se só tivermos ano, mês e dia, precisaremos da função `ymd()`. Se tivermos hora e minuto juntos, aí a função `ymd_hm()` e assim por diante.
+
+### Exemplos com datas
+
+```{r}
+lakers %>% 
+  select(date) %>% 
+  mutate(`date %>% ymd` = date %>% ymd,
+         `date %>% ymd_hm` = date %>% ymd_hm) %>% 
+  head %>%
+  knitr::kable()
+```
+
+- Repare que a função `ymd_hm()` retorna `NA` porque não há informação de hora e nem de minuto na string. 
+
+### Exemplos com datas e horas
+
+```{r}
+lakers %>% 
+  select(date, time) %>% 
+  mutate(`paste(date, time) %>% ymd` = paste(date, time) %>% ymd,
+         `paste(date, time) %>% ymd_hm` = paste(date, time) %>% ymd_hm,
+         `time %>% hm` = time %>% hm,
+         `time %>% hms` = time %>% hms
+         ) %>% 
+  head %>%
+  knitr::kable()
+```
+
+
+
+
+
+
