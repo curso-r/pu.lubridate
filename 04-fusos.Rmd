@@ -21,8 +21,14 @@ Para fazer essas coisas, o `lubridate` fornece as funções `with_tz()` e `force
 estreia_GoT <- ymd_hms("2017-07-16 22:00:00", tz = "America/Sao_Paulo")
 estreia_GoT
 
+# Calcula qual seria a data em outro fuso
+
 with_tz(estreia_GoT, tzone = "GMT")
-with_tz(estreia_GoT, tzone = "US/Alaska")
+with_tz(estreia_GoT, tzone = "US/Alaska")  
+
+# Altera o fuso sem mudar a data
+
+force_tz(estreia_GoT, tzone = "GMT")
 ```
 
-Você também pode...
+

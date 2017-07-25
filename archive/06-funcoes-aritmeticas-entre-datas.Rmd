@@ -1,6 +1,0 @@
----
-title: "Operações aritméticas entre datas"
-author: "Curso-R"
----
-
-## Operações aritméticas entre datas

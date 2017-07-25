@@ -12,3 +12,33 @@ knitr::opts_chunk$set(
 ```
 
 ## Operações com datas
+
+O pacote `lubridate` possui ainda funções para calcular intervalos e fazer operações aritméticas com datas.
+
+### Intervalos
+
+Intervalos podem ser salvos em objetos com classe `interval`.
+
+```{r}
+inicio <- dmy("01-04-1991")
+evento <- dmy("31-10-1993")
+
+sobrev <- interval(inicio, evento)
+sobrev
+class(sobrev)
+```
+
+Você pode verificar se dois intervalos tem intersecção com a função `int_overlaps()`.
+
+```{r}
+# Outra forma de definir um intervalo: o operador %--%
+intervalo_1 <- dmy("01-02-2003") %--% dmy("02-03-2005")  
+
+intervalo_2 <- dmy("04-05-2004") %--% dmy("12-03-2012")  
+
+int_overlaps(intervalo_1, intervalo_2)
+```
+
+### Aritmética com datas
+
+

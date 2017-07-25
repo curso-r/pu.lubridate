@@ -1,6 +1,0 @@
----
-title: "Gerar datas"
-author: "Curso-R"
----
-
-## Gerar datas
