@@ -173,7 +173,7 @@ Também existem funções para extrair a data no instante da execução.
 today() 
 ## [1] "2017-07-25"
 now()
-## [1] "2017-07-25 02:12:05 UTC"
+## [1] "2017-07-25 04:16:56 UTC"
 
 # Data e horário do dia em que essa página foi editada pela última vez.
 ```
@@ -197,17 +197,61 @@ estreia_GoT <- ymd_hms("2017-07-16 22:00:00", tz = "America/Sao_Paulo")
 estreia_GoT
 ## [1] "2017-07-16 22:00:00 BRT"
 
+# Calcula qual seria a data em outro fuso
+
 with_tz(estreia_GoT, tzone = "GMT")
 ## [1] "2017-07-17 01:00:00 GMT"
-with_tz(estreia_GoT, tzone = "US/Alaska")
+with_tz(estreia_GoT, tzone = "US/Alaska")  
 ## [1] "2017-07-16 17:00:00 AKDT"
+
+# Altera o fuso sem mudar a data
+
+force_tz(estreia_GoT, tzone = "GMT")
+## [1] "2017-07-16 22:00:00 GMT"
 ```
 
-Você também pode...
+
 
 
 
 
 
 ## Operações com datas
+
+O pacote `lubridate` possui ainda funções para calcular intervalos e fazer operações aritméticas com datas.
+
+### Intervalos
+
+Intervalos podem ser salvos em objetos com classe `interval`.
+
+
+```r
+inicio <- dmy("01-04-1991")
+evento <- dmy("31-10-1993")
+
+sobrev <- interval(inicio, evento)
+sobrev
+## [1] 1991-04-01 UTC--1993-10-31 UTC
+class(sobrev)
+## [1] "Interval"
+## attr(,"package")
+## [1] "lubridate"
+```
+
+Você pode verificar se dois intervalos tem intersecção com a função `int_overlaps()`.
+
+
+```r
+# Outra forma de definir um intervalo: o operador %--%
+intervalo_1 <- dmy("01-02-2003") %--% dmy("02-03-2005")  
+
+intervalo_2 <- dmy("04-05-2004") %--% dmy("12-03-2012")  
+
+int_overlaps(intervalo_1, intervalo_2)
+## [1] TRUE
+```
+
+### Aritmética com datas
+
+
 
