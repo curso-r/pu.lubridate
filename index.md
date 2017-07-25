@@ -48,6 +48,7 @@ Neste seção, aprenderemos:
 - Trabalhar com fusos horários.
 - Operações aritméticas com datas.
 
+--------------------------------------------------------------------------------
 
 
 
@@ -112,6 +113,7 @@ ymd_hms(20151021165411)
 ## [1] "2015-10-21 16:54:11 UTC"
 ```
 
+--------------------------------------------------------------------------------
 
 
 
@@ -173,13 +175,12 @@ Também existem funções para extrair a data no instante da execução.
 today() 
 ## [1] "2017-07-25"
 now()
-## [1] "2017-07-25 04:16:56 UTC"
+## [1] "2017-07-25 04:41:22 UTC"
 
 # Data e horário do dia em que essa página foi editada pela última vez.
 ```
 
-
-
+--------------------------------------------------------------------------------
 
 
 
@@ -210,7 +211,7 @@ force_tz(estreia_GoT, tzone = "GMT")
 ## [1] "2017-07-16 22:00:00 GMT"
 ```
 
-
+--------------------------------------------------------------------------------
 
 
 
@@ -253,5 +254,46 @@ int_overlaps(intervalo_1, intervalo_2)
 
 ### Aritmética com datas
 
+Veja alguns exemplos de operações aritméticas que você pode fazer utilizando funções do `lubridate`:
 
+
+```r
+
+# Somando datas
+
+data <- dmy(31012000)
+
+data + ddays(1)
+## [1] "2000-02-01"
+data + dyears(1)
+## [1] "2001-01-30"
+
+data + months(1)  # Operações que resultam em datas inválidas geram NAs.
+## [1] NA
+
+# Criando datas recorrentes
+
+reuniao <- dmy("18-03-2017")
+reunioes <- reuniao + weeks(0:10)
+reunioes
+##  [1] "2017-03-18" "2017-03-25" "2017-04-01" "2017-04-08" "2017-04-15"
+##  [6] "2017-04-22" "2017-04-29" "2017-05-06" "2017-05-13" "2017-05-20"
+## [11] "2017-05-27"
+
+# Duração de um intervalo 
+
+intervalo <-dmy("01-03-2003") %--% dmy("31-03-2003") 
+
+intervalo / ddays(1)               # Número de dias
+## [1] 30
+intervalo / dminutes(1)            # Número de minutos
+## [1] 43200
+
+as.period(intervalo)
+## [1] "30d 0H 0M 0S"
+```
+
+Para mais informações sobre o`lubridate`, visite o [vignette do pacote](https://cran.r-project.org/web/packages/lubridate/vignettes/lubridate.html).
+
+--------------------------------------------------------------------------------
 
