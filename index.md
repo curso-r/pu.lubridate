@@ -1,6 +1,6 @@
 ---
 title: Introdução
-date: '2017-07-22'
+date: '2017-07-25'
 ---
 
 
@@ -47,7 +47,6 @@ Neste seção, aprenderemos:
 - Algumas funções úteis para trabalhar com datas.
 - Trabalhar com fusos horários.
 - Operações aritméticas com datas.
-- Gerar datas.
 
 
 
@@ -172,9 +171,9 @@ Também existem funções para extrair a data no instante da execução.
 
 ```r
 today() 
-## [1] "2017-07-22"
+## [1] "2017-07-25"
 now()
-## [1] "2017-07-22 05:43:40 UTC"
+## [1] "2017-07-25 02:12:05 UTC"
 
 # Data e horário do dia em que essa página foi editada pela última vez.
 ```
