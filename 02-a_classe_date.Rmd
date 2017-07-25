@@ -54,3 +54,4 @@ Se além da data você precisar especificar o horário, basta usar as funções 
 ymd_hms(20151021165411)
 ```
 
+--------------------------------------------------------------------------------

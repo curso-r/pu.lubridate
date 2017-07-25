@@ -31,4 +31,4 @@ with_tz(estreia_GoT, tzone = "US/Alaska")
 force_tz(estreia_GoT, tzone = "GMT")
 ```
 
-
+--------------------------------------------------------------------------------

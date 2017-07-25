@@ -41,4 +41,35 @@ int_overlaps(intervalo_1, intervalo_2)
 
 ### Aritmética com datas
 
+Veja alguns exemplos de operações aritméticas que você pode fazer utilizando funções do `lubridate`:
 
+```{r}
+
+# Somando datas
+
+data <- dmy(31012000)
+
+data + ddays(1)
+data + dyears(1)
+
+data + months(1)  # Operações que resultam em datas inválidas geram NAs.
+
+# Criando datas recorrentes
+
+reuniao <- dmy("18-03-2017")
+reunioes <- reuniao + weeks(0:10)
+reunioes
+
+# Duração de um intervalo 
+
+intervalo <-dmy("01-03-2003") %--% dmy("31-03-2003") 
+
+intervalo / ddays(1)               # Número de dias
+intervalo / dminutes(1)            # Número de minutos
+
+as.period(intervalo)
+```
+
+Para mais informações sobre o`lubridate`, visite o [vignette do pacote](https://cran.r-project.org/web/packages/lubridate/vignettes/lubridate.html).
+
+--------------------------------------------------------------------------------
