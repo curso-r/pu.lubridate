@@ -43,5 +43,4 @@ Neste seção, aprenderemos:
 - Algumas funções úteis para trabalhar com datas.
 - Trabalhar com fusos horários.
 - Operações aritméticas com datas.
-- Gerar datas.
 

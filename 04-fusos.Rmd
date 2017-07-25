@@ -23,7 +23,6 @@ estreia_GoT
 
 with_tz(estreia_GoT, tzone = "GMT")
 with_tz(estreia_GoT, tzone = "US/Alaska")
-
 ```
 
 Você também pode...
