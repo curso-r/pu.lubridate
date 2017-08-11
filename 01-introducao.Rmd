@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 
 Trabalhar com datas no R pode ser uma chateação. As funções do R base são, em geral, contraintuitivas e podem mudar de acordo com o tipo do objeto que você está usando. Além disso, características como fusos horários, anos bissextos, horários de verão, entre outras, podem não estar bem especificadas pelos métodos criados ou nem mesmo sendo levadas em conta.
 
-O pacote lubridate lida com esses problemas, fazendo o trabalho com datas ser muito mais fácil. Ele foi criado por Garrett Grolemund e Hadley Wickham.
+O pacote `lubridate`, criado por [Garrett Grolemund](https://github.com/garrettgman) e [Hadley Wickham](https://github.com/hadley), lida com esses problemas, fazendo o trabalho com datas ser muito mais fácil.
 
 Para instalar, siga uma das opções abaixo:
 
@@ -27,21 +27,24 @@ install.packages("tidyverse")
 install.packages("lubridate")
 
 # Instale a versão de desenvolvimento direto do Github.
-# Caso não tenha o devtools instalado: install.packages("devtools").
 devtools::install_github("tidyverse/lubridate")
+
+# Se você não tiver o pacote devtools instalado...
+install.packages("devtools")
+
 ```
 
 Para carregar o pacote, basta rodar
 
-```{r}
+```{r, message=FALSE}
 library(lubridate)
 ```
 
-Neste seção, aprenderemos:
+Neste seção, falaremos sobre:
 
-- Transformar e extrair datas.
-- Algumas funções úteis para trabalhar com datas.
-- Trabalhar com fusos horários.
-- Operações aritméticas com datas.
+- transformar e extrair datas;
+- algumas funções úteis para trabalhar com datas;
+- trabalhar com fusos horários; e
+- operações aritméticas com datas.
 
 --------------------------------------------------------------------------------

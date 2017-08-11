@@ -11,6 +11,11 @@ knitr::opts_chunk$set(
 )
 ```
 
+```{r, include=FALSE}
+library(lubridate)
+```
+
+
 ## A classe "date"
 
 Datas no R são tratadas como um tipo especial de objeto, com classe `date`. Há várias formas de criar objetos dessa classe:
@@ -31,7 +36,7 @@ class(data_mdy)
 
 Veja que as funções `date()` e `as_date()` converteram a *string* para data, mas não devolveram o valor esperado. A função `dmy()` resolve esse problema estabelecendo explicitamente a ordem dia-mês-ano. Existem funções para todas as ordens possíveis: `dmy()`, `mdy()`, `myd()`, `ymd()`, `ydm()` etc.
 
-As funções `date()` e `as_date()` assumem que a ordem é ano-mês-dia (ymd).
+As funções `date()` e `as_date()` assumem que a ordem segue o padrão da língua inglesa: ano-mês-dia (ymd).
 
 ```{r}
 date("2015-10-21")
