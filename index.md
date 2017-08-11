@@ -175,7 +175,7 @@ Também existem funções para extrair a data no instante da execução.
 today() 
 ## [1] "2017-08-11"
 now()
-## [1] "2017-08-11 04:17:58 UTC"
+## [1] "2017-08-11 23:28:35 UTC"
 
 # Data e horário do dia em que essa página foi editada pela última vez.
 ```
