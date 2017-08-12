@@ -11,7 +11,7 @@ date: '2017-08-12'
 
 Trabalhar com datas no R pode ser uma chateação. As funções do R base são, em geral, contraintuitivas e podem mudar de acordo com o tipo do objeto que você está usando. Além disso, características como fusos horários, anos bissextos, horários de verão, entre outras, podem não estar bem especificadas pelos métodos criados ou nem mesmo sendo levadas em conta.
 
-O pacote lubridate lida com esses problemas, fazendo o trabalho com datas ser muito mais fácil. Ele foi criado por Garrett Grolemund e Hadley Wickham.
+O pacote `lubridate`, criado por [Garrett Grolemund](https://github.com/garrettgman) e [Hadley Wickham](https://github.com/hadley), lida com esses problemas, fazendo o trabalho com datas ser muito mais fácil.
 
 Para instalar, siga uma das opções abaixo:
 
@@ -24,8 +24,11 @@ install.packages("tidyverse")
 install.packages("lubridate")
 
 # Instale a versão de desenvolvimento direto do Github.
-# Caso não tenha o devtools instalado: install.packages("devtools").
 devtools::install_github("tidyverse/lubridate")
+
+# Se você não tiver o pacote devtools instalado...
+install.packages("devtools")
+
 ```
 
 Para carregar o pacote, basta rodar
@@ -33,22 +36,19 @@ Para carregar o pacote, basta rodar
 
 ```r
 library(lubridate)
-## Loading required package: methods
-## 
-## Attaching package: 'lubridate'
-## The following object is masked from 'package:base':
-## 
-##     date
 ```
 
-Neste seção, aprenderemos:
+Neste seção, falaremos sobre:
 
-- Transformar e extrair datas.
-- Algumas funções úteis para trabalhar com datas.
-- Trabalhar com fusos horários.
-- Operações aritméticas com datas.
+- transformar e extrair datas;
+- algumas funções úteis para trabalhar com datas;
+- trabalhar com fusos horários; e
+- operações aritméticas com datas.
 
 --------------------------------------------------------------------------------
+
+
+
 
 
 
@@ -80,7 +80,7 @@ class(data_mdy)
 
 Veja que as funções `date()` e `as_date()` converteram a *string* para data, mas não devolveram o valor esperado. A função `dmy()` resolve esse problema estabelecendo explicitamente a ordem dia-mês-ano. Existem funções para todas as ordens possíveis: `dmy()`, `mdy()`, `myd()`, `ymd()`, `ydm()` etc.
 
-As funções `date()` e `as_date()` assumem que a ordem é ano-mês-dia (ymd).
+As funções `date()` e `as_date()` assumem que a ordem segue o padrão da língua inglesa: ano-mês-dia (ymd).
 
 
 ```r
@@ -175,7 +175,7 @@ Também existem funções para extrair a data no instante da execução.
 today() 
 ## [1] "2017-08-12"
 now()
-## [1] "2017-08-12 00:20:16 UTC"
+## [1] "2017-08-12 00:27:28 UTC"
 
 # Data e horário do dia em que essa página foi editada pela última vez.
 ```
@@ -188,9 +188,9 @@ now()
 
 ## Fusos horários
 
-Uma característica inerente das datas é o fuso horário. Se você tiver trabalhando com datas de eventos no Brasil e na Escócia, por exemplo, é preciso verificar se os valores seguem o mesmo fuso horário. Além disso, quando a data exata de um evento for relevante, você pode precisar converter horários para outros fusos para comunicar seus resultados em outros países.
+Uma característica inerente das datas é o fuso horário. Se você estiver trabalhando com datas de eventos no Brasil e na Escócia, por exemplo, é preciso verificar se os valores seguem o mesmo fuso horário. Além disso, quando a data exata de um evento for relevante, você pode precisar converter horários para outros fusos para comunicar seus resultados em outros países.
 
-Para fazer essas coisas, o `lubridate` fornece as funções `with_tz()` e `force_tz()`.
+Para fazer essas coisas, o `lubridate` fornece as funções `with_tz()` e `force_tz()`. Veja um exemplo de como usá-las.
 
 
 ```r
@@ -198,14 +198,14 @@ estreia_GoT <- ymd_hms("2017-07-16 22:00:00", tz = "America/Sao_Paulo")
 estreia_GoT
 ## [1] "2017-07-16 22:00:00 BRT"
 
-# Calcula qual seria a data em outro fuso
+# Devolve qual seria a data em outro fuso
 
 with_tz(estreia_GoT, tzone = "GMT")
 ## [1] "2017-07-17 01:00:00 GMT"
 with_tz(estreia_GoT, tzone = "US/Alaska")  
 ## [1] "2017-07-16 17:00:00 AKDT"
 
-# Altera o fuso sem mudar a data
+# Altera o fuso sem mudar a hora
 
 force_tz(estreia_GoT, tzone = "GMT")
 ## [1] "2017-07-16 22:00:00 GMT"
@@ -294,6 +294,195 @@ as.period(intervalo)
 ```
 
 Para mais informações sobre o`lubridate`, visite o [vignette do pacote](https://cran.r-project.org/web/packages/lubridate/vignettes/lubridate.html).
+
+--------------------------------------------------------------------------------
+
+
+
+## Exercícios
+
+Nos exercícios a seguir, vamos utilizar a base `lakers`, que contém estatísticas jogo a jogo do [Los Angeles Lakers](http://www.nba.com/lakers/) na temporada 2008-2009.
+
+
+```r
+head(lakers)
+##       date opponent game_type  time period     etype team
+## 1 20081028      POR      home 12:00      1 jump ball  OFF
+## 2 20081028      POR      home 11:39      1      shot  LAL
+## 3 20081028      POR      home 11:37      1   rebound  LAL
+## 4 20081028      POR      home 11:25      1      shot  LAL
+## 5 20081028      POR      home 11:23      1   rebound  LAL
+## 6 20081028      POR      home 11:22      1      shot  LAL
+##                player result points  type  x  y
+## 1                                 0       NA NA
+## 2           Pau Gasol missed      0  hook 23 13
+## 3 Vladimir Radmanovic             0   off NA NA
+## 4        Derek Fisher missed      0 layup 25  6
+## 5           Pau Gasol             0   off NA NA
+## 6           Pau Gasol   made      2  hook 25 10
+```
+
+--------------------------------------------------------------------------------
+
+**1.**
+
+Repare que a coluna `date` no data.frame é um vetor de inteiros. Transforme essa coluna em um vetor de valores com classe `date`.
+
+--------------------------------------------------------------------------------
+
+**2.**
+
+Crie uma coluna que junte as informações de data e tempo de jogo (colunas `date` e `time`) em objetos da classe `date`.
+
+--------------------------------------------------------------------------------
+
+**3.**
+
+Crie as colunas `dia`, `mês` e `ano` com as respectivas informações sobre a data do jogo.
+
+--------------------------------------------------------------------------------
+
+**4.**
+
+Em média, quanto tempo o Lakers demora para arremessar a primeira bola no primeiro período?
+
+**Dica**: arremessos são representados pela categoria `shot` da coluna `etype`.
+
+--------------------------------------------------------------------------------
+
+**5.**
+
+Em média, quanto tempo demora para sair a primeira cesta de três pontos? Considere toda a base, e cestas de ambos os times.
+
+--------------------------------------------------------------------------------
+
+**6.**
+
+Construa boxplots do tempo entre pontos consecultivos para cada períodos. Considere toda a base de dados e apenas pontos do Lakers.
+
+--------------------------------------------------------------------------------
+
+**7.**
+
+Qual foi o dia e mês do jogo que o Lakers demorou mais tempo para fazer uma cesta? Quanto tempo foi?
+
+--------------------------------------------------------------------------------
+
+
+
+
+
+
+```
+## Error in library(dplyr): there is no package called 'dplyr'
+```
+
+
+## Respostas
+
+<div class='admonition note'>
+<p class='admonition-title'>
+Nota
+</p>
+<p>
+Não há apenas uma maneira de resolver os exercícios. Você pode encontrar soluções diferentes das nossas, algumas vezes mais eficientes, outras vezes menos. Quando estiver fazendo suas análises, tente buscar o equilíbrio entre eficiência e praticidade. Economizar 1 hora com a execução do código pode não valer a pena se você demorou 2 horas a mais para programá-lo.
+</p>
+</div>
+
+--------------------------------------------------------------------------------
+
+**1.**
+
+Crie uma nova coluna no data.frame com as datas no formato dia-mês-ano.
+
+
+```r
+lakers %>% 
+  mutate(date = ymd(date))
+## Error in mutate(., date = ymd(date)): could not find function "mutate"
+```
+
+Repare que `as_date()` não funciona neste caso.
+
+
+```r
+lakers %>%
+  mutate(date = as_date(date))
+## Error in mutate(., date = as_date(date)): could not find function "mutate"
+```
+
+Para entender porque a função devolveu um dia do ano 56949, rode os códigos abaixo.
+
+
+```r
+as_date(0)
+## [1] "1970-01-01"
+as_date(-3:3)
+## [1] "1969-12-29" "1969-12-30" "1969-12-31" "1970-01-01" "1970-01-02"
+## [6] "1970-01-03" "1970-01-04"
+as_date(20081027:20081029)
+## [1] "56949-12-26" "56949-12-27" "56949-12-28"
+```
+
+
+--------------------------------------------------------------------------------
+
+**2.**
+
+Crie uma coluna que junte as informações de data e hora (colunas `date` e `time`) em objetos da classe `date`.
+
+
+```r
+lakers %>% 
+  mutate(date_time = paste0(date, " 00:", time) %>% ymd_hms) %>% 
+  select(date_time)
+## Error in mutate(., date_time = paste0(date, " 00:", time) %>% ymd_hms): could not find function "mutate"
+```
+
+
+--------------------------------------------------------------------------------
+
+**3.**
+
+Crie as colunas `dia`, `mes` e `ano` com as respectivas informações sobre a data do jogo.
+
+
+```r
+lakers %>%
+  mutate(date = ymd(date),
+         dia = day(date),
+         mes = month(date),
+         ano = year(date)) %>% 
+  select(date, dia, mes, ano)
+## Error in mutate(., date = ymd(date), dia = day(date), mes = month(date), : could not find function "mutate"
+```
+
+
+--------------------------------------------------------------------------------
+
+**4.**
+
+Em média, quanto tempo o Lakers demora para arremessar a primeira bola no primeiro período?
+
+**Dica**: arremessos são representados pela categoria `shot` da coluna `etype`.
+
+--------------------------------------------------------------------------------
+
+**5.**
+
+Em média, quanto tempo demora para sair a primeira cesta de três pontos? Considere toda a base, e cestas de ambos os times.
+
+--------------------------------------------------------------------------------
+
+**6.**
+
+Construa boxplots do tempo entre pontos consecultivos para cada períodos. Considere toda a base de dados e apenas pontos do Lakers.
+
+--------------------------------------------------------------------------------
+
+**7.**
+
+Qual foi o dia e mês do jogo que o Lakers demorou mais tempo para fazer uma cesta? Quanto tempo foi?
 
 --------------------------------------------------------------------------------
 
