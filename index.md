@@ -1,6 +1,6 @@
 ---
 title: Introdução
-date: '2017-08-11'
+date: '2017-08-12'
 ---
 
 
@@ -173,9 +173,9 @@ Também existem funções para extrair a data no instante da execução.
 
 ```r
 today() 
-## [1] "2017-08-11"
+## [1] "2017-08-12"
 now()
-## [1] "2017-08-11 23:28:35 UTC"
+## [1] "2017-08-12 00:20:16 UTC"
 
 # Data e horário do dia em que essa página foi editada pela última vez.
 ```
