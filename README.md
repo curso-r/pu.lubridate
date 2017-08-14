@@ -4,6 +4,8 @@ Status](https://travis-ci.org/curso-r/pu.lubridate.svg?branch=master)](https://t
 pu.lubridate
 ============
 
+pu do pacote lubridate
+
 Descrição
 ---------
 
