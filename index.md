@@ -1,6 +1,6 @@
 ---
 title: Introdução
-date: '2017-08-12'
+date: '2017-08-14'
 ---
 
 
@@ -173,9 +173,9 @@ Também existem funções para extrair a data no instante da execução.
 
 ```r
 today() 
-## [1] "2017-08-12"
+## [1] "2017-08-14"
 now()
-## [1] "2017-08-12 00:27:28 UTC"
+## [1] "2017-08-14 21:30:21 UTC"
 
 # Data e horário do dia em que essa página foi editada pela última vez.
 ```
@@ -305,21 +305,8 @@ Nos exercícios a seguir, vamos utilizar a base `lakers`, que contém estatísti
 
 
 ```r
-head(lakers)
-##       date opponent game_type  time period     etype team
-## 1 20081028      POR      home 12:00      1 jump ball  OFF
-## 2 20081028      POR      home 11:39      1      shot  LAL
-## 3 20081028      POR      home 11:37      1   rebound  LAL
-## 4 20081028      POR      home 11:25      1      shot  LAL
-## 5 20081028      POR      home 11:23      1   rebound  LAL
-## 6 20081028      POR      home 11:22      1      shot  LAL
-##                player result points  type  x  y
-## 1                                 0       NA NA
-## 2           Pau Gasol missed      0  hook 23 13
-## 3 Vladimir Radmanovic             0   off NA NA
-## 4        Derek Fisher missed      0 layup 25  6
-## 5           Pau Gasol             0   off NA NA
-## 6           Pau Gasol   made      2  hook 25 10
+lakers %>% as_tibble()
+## Error in lakers %>% as_tibble(): could not find function "%>%"
 ```
 
 --------------------------------------------------------------------------------
@@ -464,13 +451,55 @@ lakers %>%
 
 Em média, quanto tempo o Lakers demora para arremessar a primeira bola no primeiro período?
 
-**Dica**: arremessos são representados pela categoria `shot` da coluna `etype`.
+**Dicas**: arremessos são representados pela categoria `shot` da coluna `etype` e cada período tem 12 minutos.
+
+
+
+```r
+lakers %>% 
+  dplyr::filter(etype == "shot", period == 1, team == "LAL") %>% 
+  dplyr::mutate(time = hms(paste0("00:", time)),
+                cronometro = 12*60 - minute(time)*60 - second(time)) %>% 
+  dplyr::group_by(date) %>% 
+  dplyr::filter(cronometro == min(cronometro)) %>% 
+  dplyr::ungroup() %>% 
+  dplyr::summarise(media = mean(cronometro))
+## Error in loadNamespace(name): there is no package called 'dplyr'
+```
+
+O que foi feito:
+
+- Primeiro filtramos a base para arremessos, `etype == "shot"`, do primeiro período, `period == `, que fossem do Lakers, `team == "LAL"`. 
+
+- Em seguida, mudamos a classe da coluna `time`, de `character` para `period`, e criamos a coluna `cronometro`, que contém o tempo passado (em segundos) até o instante do evento.
+
+- Então agrupamos a base pelo dia e a filtramos apenas para o primeiro evento de cada dia, isto é, o evento que tem o menor valor na coluna `cronometro`. Assim, a coluna `cronometro` da base resultante terá o tempo do primeiro arremesso de cada jogo.
+
+- Por fim, desagrupamos a base e calculamos a média da coluna `cronometro`.
 
 --------------------------------------------------------------------------------
 
 **5.**
 
-Em média, quanto tempo demora para sair a primeira cesta de três pontos? Considere toda a base, e cestas de ambos os times.
+Em média, quanto tempo demora para sair a primeira cesta de três pontos em cada um dos quatro períodos? Considere toda a base, e cestas de ambos os times.
+
+
+```r
+lakers %>% 
+  dplyr::filter(etype == "shot", period %in% 1:4, points == "3") %>% 
+  dplyr::mutate(time = hms(paste0("00:", time)),
+                cronometro = 12*60 - minute(time)*60 - second(time)) %>% 
+  dplyr::group_by(date, period) %>% 
+  dplyr::filter(cronometro == min(cronometro)) %>% 
+  dplyr::ungroup() %>%
+  dplyr::group_by(period) %>% 
+  dplyr::summarise(media = mean(cronometro))
+## Error in loadNamespace(name): there is no package called 'dplyr'
+```
+
+A resolução desse exercício é análoga ao anterior, só mudamos o filtro inicial e o agrupamento. Se você ficou com dúvidas, consulte o passo a passo na resolução do exercício 4.
+
+Repare que não precisarímos filtrar por `etype == "shot"`, já que o único evento que gera 3 pontos é a cesta de 3 pontos.
 
 --------------------------------------------------------------------------------
 
